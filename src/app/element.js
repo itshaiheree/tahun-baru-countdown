@@ -81,7 +81,6 @@ useEffect(() => {
         >
           <Content>
             <div
-              data-aos="zoom-in"
               className="flex flex-col items-center justify-center gap-1 py-3 "
             >
               
