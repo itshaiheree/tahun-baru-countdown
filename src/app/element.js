@@ -14,7 +14,7 @@ let kataHarapan = null;
 let btnHarapan = null;
 
 if (new Date().getDate() === 1 && new Date().getMonth() === 0) {
-yearNow = d.getUTCFullYear() - 1;
+yearNow = d.getUTCFullYear();
 kataHarapan = <>Kenanglah tahun lalu, <span className='font-bold'>lihat harapanmu di tahun {yearNow}!</span></>;
 btnHarapan = "Lihat Harapanmu Disini";
 } else {
