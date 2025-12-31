@@ -91,9 +91,9 @@ useEffect(() => {
 
               <div className={`flex flex-col gap-3 mt-8 items-center ${visible}`}>
                 <p>{kataHarapan}</p>
-                <button className="btn btn-md btn-primary w-60 items-center btn-disabled">
-                  Coming Soon!
-                </button>
+                <Link href="/harapan" className="btn btn-md btn-primary w-60 items-center">
+                  {btnHarapan}
+                </Link>
               </div>
 
               {/* bagian buttonToggle */}

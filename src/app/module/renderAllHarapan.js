@@ -12,6 +12,7 @@ export default async function RenderAllHarapan() {
         Gagal memuat data harapan
       </div>
     );
+
   }
 
   return res

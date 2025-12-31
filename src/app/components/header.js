@@ -23,7 +23,7 @@ export default function Header() {
         <header className="overflow-x-hidden navbar py-2">
 
 <div className="navbar-start">
-  <Link href="/" class="btn btn-circle md:btn-lg btn-md btn-ghost md:ml-5"><i className="fa-solid fa-arrow-left"></i></Link>
+  <Link href="/" className="btn btn-circle md:btn-lg btn-md btn-ghost md:ml-5"><i className="fa-solid fa-arrow-left"></i></Link>
 </div>
         <div className="navbar-center">
           <div className="flex flex-col gap-0 items-center">

@@ -4,7 +4,7 @@ export default async function HarapanPage() {
 
   return (
     <>
-      <ButtonTambahHarapan />
+      <ButtonTambahHarapan/>
     </>
   );
 }
