@@ -2,8 +2,6 @@
 <h1>
 <img src="https://raw.githubusercontent.com/itshaiheree/tahun-baru-countdown/018fb0d9580758d7b16f3fa8fafe0d915bb03c22/public/icon.png" alt="" width="25"></img> | tahun-baru-countdown
 </h1>
-
-<br />
 Project website untuk menghitung mundur malam tahun baru
 </div>
 <br />
