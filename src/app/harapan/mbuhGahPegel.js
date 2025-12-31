@@ -20,11 +20,10 @@ export default function HarapanRender() {
       try {
         const res = await getAllHarapan();
         if (!res?.success) throw new Error();
-        if (!res?.success) { console.log(res) };
         setData(res.data);
         setStatus("loaded");
-      } catch (err){
-        console.log(err)
+      } catch (err) {
+        console.error(err);
         setStatus("error");
       }
     }
@@ -45,7 +44,6 @@ export default function HarapanRender() {
   const yearOptions = Object.keys(groupedByYear).sort((a, b) => b - a);
 
   const selectValue = hasYearQuery ? yearQuery : "all";
-  const selectValueKhusus = hasYearQuery ? yearQuery : "-- Pilih tahun --";
 
   function changeYear(value) {
     if (value === "all") {
@@ -75,123 +73,97 @@ export default function HarapanRender() {
 
       {/* ================= FILTER MODE ================= */}
       {hasYearQuery && (
-        <>
-          {groupedByYear[yearQuery]?.length > 0 ? (
-            <>
-              <select
-                className="select select-bordered"
-                value={selectValue}
-                onChange={e => changeYear(e.target.value)}
-              >
-                <option value="" disabled>-- Pilih tahun --</option>
-                <option value="all">Semua tahun</option>
-                {yearOptions.map(year => (
-                  <option key={year} value={year}>{year}</option>
-                ))}
-              </select>
-
-              <h2 className="text-3xl font-semibold text-center mt-5">
-                Lihat kembali harapan-harapan di tahun {yearQuery}
-              </h2>
-            </>
-          ) : (
-            <>
-              <p className="text-gray-500 text-center">
-                Wah, gaada nih! Coba cek tahun lainnya
-              </p>
-
-              <select
-                className="select select-bordered"
-                value={selectValueKhusus}
-                onChange={e => changeYear(e.target.value)}
-              >
-                <option value="" disabled>-- Pilih tahun --</option>
-                <option value="all">Semua tahun</option>
-                {yearOptions.map(year => (
-                  <option key={year} value={year}>{year}</option>
-                ))}
-              </select>
-            </>
-          )}
-
-          {groupedByYear[yearQuery]?.length > 0 && (
-            <div
-              className={`grid grid-cols-1 md:${gridCols(groupedByYear[yearQuery].length)} gap-4 w-full max-w-5xl justify-center mt-4`}
+        groupedByYear[yearQuery]?.length > 0 ? (
+          <>
+            <select
+              className="select select-bordered"
+              value={selectValue}
+              onChange={e => changeYear(e.target.value)}
             >
+              <option value="" disabled>-- Pilih tahun --</option>
+              <option value="all">Semua tahun</option>
+              {yearOptions.map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+
+            <h2 className="text-3xl font-semibold text-center mt-5">
+              Lihat kembali harapan-harapan di tahun {yearQuery}
+            </h2>
+
+            <div className={`grid grid-cols-1 md:${gridCols(groupedByYear[yearQuery].length)} gap-4 w-full max-w-5xl justify-center mt-4`}>
               {groupedByYear[yearQuery].slice(0, 14).map(item => (
-                <div
-                  key={item._id}
-                  className="border rounded-xl p-4 shadow-sm h-full flex flex-col"
-                >
+                <div key={item._id} className="border rounded-xl p-4 shadow-sm h-full flex flex-col">
                   <p className="font-semibold">{item.sender}</p>
-
                   <p className="mt-3 flex-1">{item.msg}</p>
-
                   <span className="text-xs text-gray-400 mt-3">
                     {new Date(item.createdAt).toLocaleString("id-ID")}
                   </span>
                 </div>
               ))}
             </div>
-          )}
-        </>
+          </>
+        ) : (
+          <>
+            <p className="text-gray-500 text-center">
+              Wah, gaada nih! Coba cek tahun lainnya
+            </p>
+
+            <select
+              className="select select-bordered"
+              value={selectValue}
+              onChange={e => changeYear(e.target.value)}
+            >
+              <option value="" disabled>-- Pilih tahun --</option>
+              <option value="all">Semua tahun</option>
+              {yearOptions.map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+          </>
+        )
       )}
 
-{/* ================= FULL YEAR MODE ================= */}
-{!hasYearQuery && (
-  <>
-    {yearOptions?.length > 0 ? (
-      <>
-        <select
-          className="select select-bordered"
-          value={selectValue}
-          onChange={(e) => changeYear(e.target.value)}
-        >
-          <option value="" disabled>
-            -- Pilih tahun --
-          </option>
-          <option value="all">Semua tahun</option>
-          {yearOptions.map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
-
-        {yearOptions.map((year) => (
-          <div key={year} className="w-full max-w-5xl space-y-4 mt-3">
-            <h2 className="text-2xl font-bold">{year}</h2>
-
-            <div
-              className={`grid grid-cols-1 md:${gridCols(
-                groupedByYear[year].length
-              )} gap-4 justify-center mt-3`}
+      {/* ================= FULL YEAR MODE ================= */}
+      {!hasYearQuery && (
+        yearOptions?.length > 0 ? (
+          <>
+            <select
+              className="select select-bordered"
+              value={selectValue}
+              onChange={(e) => changeYear(e.target.value)}
             >
-              {groupedByYear[year].slice(0, 14).map((item) => (
-                <div
-                  key={item._id}
-                  className="border rounded-xl p-4 shadow-sm h-full flex flex-col"
-                >
-                  <p className="font-semibold">{item.sender}</p>
-
-                  <p className="mt-3 flex-1">{item.msg}</p>
-
-                  <span className="text-xs text-gray-400 mt-3">
-                    {new Date(item.createdAt).toLocaleString("id-ID")}
-                  </span>
-                </div>
+              <option value="" disabled>-- Pilih tahun --</option>
+              <option value="all">Semua tahun</option>
+              {yearOptions.map((year) => (
+                <option key={year} value={year}>{year}</option>
               ))}
-            </div>
-          </div>
-        ))}
-      </>
-    ) : (
-      <p className="text-gray-500 text-center">
-        Wah, gaada nih! Yuk, jadi yang pertama!
-      </p>
-    )}
-  </>
-)}
+            </select>
+
+            {yearOptions.map((year) => (
+              <div key={year} className="w-full max-w-5xl space-y-4 mt-3">
+                <h2 className="text-2xl font-bold">{year}</h2>
+
+                <div className={`grid grid-cols-1 md:${gridCols(groupedByYear[year].length)} gap-4 justify-center mt-3`}>
+                  {groupedByYear[year].slice(0, 14).map((item) => (
+                    <div key={item._id} className="border rounded-xl p-4 shadow-sm h-full flex flex-col">
+                      <p className="font-semibold">{item.sender}</p>
+                      <p className="mt-3 flex-1">{item.msg}</p>
+                      <span className="text-xs text-gray-400 mt-3">
+                        {new Date(item.createdAt).toLocaleString("id-ID")}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </>
+        ) : (
+          <p className="text-gray-500 text-center">
+            Wah, gaada nih! Yuk, jadi yang pertama!
+          </p>
+        )
+      )}
     </div>
   );
 }
