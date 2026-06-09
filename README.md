@@ -39,8 +39,8 @@ npm start
 Jangan lupa, setting link, username dan password MongoDB mu di enviroment (.env) dengan format:
 
 ```
-IYAH=[link db]
-USER=[username db]
+LINK=[link db]
+IYAH=[username db]
 PASS=[password db]
 ```
 
