@@ -17,7 +17,7 @@ Kunjungi [tahunbaru.mhai.my.id](https://tahunbaru.mhai.my.id)
 # Fitur
 1. Liat contdown realtime
 2. Endless countdown (Setelah lewat tgl 1 Jan dia akan otomatis mulai hitung munudur untuk tahun depan)
-3. Tambah "Harapan" yang terintegrasi dengan MongoDB (COMING SOON)
+3. Tambah "Harapan" yang terintegrasi dengan MongoDB (NEW 🆕)
 
 ##
 
@@ -36,7 +36,13 @@ npm run build
 npm start
 ```
 
-Mudah kan??
+Jangan lupa, setting link, username dan password MongoDB mu di enviroment (.env) dengan format:
+
+```
+IYAH=[link db]
+USER=[username db]
+PASS=[password db]
+```
 
 ##
 
