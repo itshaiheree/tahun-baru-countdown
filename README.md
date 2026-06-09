@@ -16,20 +16,20 @@ Kunjungi [tahunbaru.mhai.my.id](https://tahunbaru.mhai.my.id)
 
 # Fitur
 1. Liat contdown realtime
-2. Endless countdown (Setelah lewat tgl 1 Jan dia akan otomatis mulai hitung munudur untuk tahun depan)
+2. Endless countdown (Setelah lewat tanggal 1 Januari, dia akan otomatis mulai hitung munudur untuk tahun depan)
 3. Tambah "Harapan" yang terintegrasi dengan MongoDB (NEW 🆕)
 
 ##
 
 
-# Mau run sendiri bisa?
-Bisa lah, tinggal clone aja. Atau bisa pull repo ini.
+# Mau run sendiri? Bisa dong!
+Tinggal clone repo ini atau pull repo ini.
 
-Terus tinggal run aja pakai
+Untuk run dev mode, tinggal run
 ```
 npm run dev
 ```
-atau
+atau untuk production-build nya:
 
 ```
 npm run build
